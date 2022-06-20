@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Identificador de codigos</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <!--<script src="Canvas.js"></script>-->
+        
+    </head>
+    <body>
+        <video class="centerX" id="video" playsinline autoplay style="display:none"></video>
+
+        <div class="title">
+            Identificador de codigos - Testing
+        </div>
+        <div style="width:100%">
+            <div class="canvasWrapper centerX">
+                <div class="canvasContainer centerY">
+                    <canvas id="canvasShown"></canvas>
+                </div>
+                <div class="canvasContainer centerY">
+                    <canvas id="canvasProcess"></canvas>                    
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <button class="takePicture centerX" onclick="showCamera()">
+            Capturar artículo
+        </button>
+        <p style="text-align: center;font-weight: bolder;">
+            Resultado:
+        </p>
+        <div class="result centerX">
+            
+        </div>
+        <script src="processing.js"></script>
+    </body>
+</html>
+
