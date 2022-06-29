@@ -1,6 +1,8 @@
 //Declaración de objetos
-var canvasShown = new Canvas("canvasShown");
-var canvasProcess = new Canvas("canvasProcess");
+//canvasShown es el canvas que se muestra al usuario
+//canvasProcess es el canvas que se utilizará para la decodificación del código de barras
+var canvasShown = new Canvas("canvasShown"); 
+var canvasProcess = new Canvas("canvasProcess"); 
 
 //Dimensiones de canvasShown y cámara
 var widthCanvasShown = heightCanvasShown = 500;
@@ -38,9 +40,10 @@ function showCamera(){
     }
 }
 
+
 function canvasInput(){
     canvasShown.ctx.drawImage(video,0,0,widthCanvasShown,heightCanvasShown,0,0,widthCanvasShown,heightCanvasShown);
-    canvasProcess.ctx.drawImage(video,x1,y1,(x2-x1+1),(y2-y1+1),0,0,(x2-x1+1),(y2-y1+1)); //CHECALO
+    canvasProcess.ctx.drawImage(video,x1,y1,(x2-x1+1),(y2-y1+1),0,0,(x2-x1+1),(y2-y1+1));
     canvasShown.getImage();
     canvasProcess.getImage();
     canvasShownPutImage();
@@ -89,6 +92,7 @@ function canvasProcessPutImage(){
         pixels[i+1] = val;
         pixels[i+2] = val;
     }
+    //Detectar y procesar
     canvasProcess.setImage(pixels);
 }
 
