@@ -7,11 +7,35 @@ function decode(image){
             "thresh" : thresh}
     ;
 }
+//Función que decodifica la secuencia binaria ya leida a un código ean13 decimal. Toma como parámetros los
+//los arreglos de los 6 dígitos a la izquierda del center guard y los 6 dígitos a la derecha del mismo.
+//Retorna una cadena con el código ean13 ya decodificado. Ej, "7501005118675"
+function getEan13(leftCodes,rightCodes){
+    let parityPattern = ean13 = "";
+
+    //Bucle para añadir el primer dígito
+    for(let i = 0; i < 6; i++){
+        parityPattern = parityPattern + leftCodes[i]["parity"];
+    }
+    ean13 = ean13 + getFirstDigit(parityPattern);
+
+    //Bucle para añadir los 6 dígitos a la izquierda del center guard
+    for(let i = 0; i < 6; i++){
+        parityPattern = parityPattern + leftCodes[i]["code"];
+    }
+
+    //Bucle para añadir los 6 dígitos a la derecha del center guard
+    for(let i = 0; i < 6; i++){
+        parityPattern = parityPattern + rightCodes[i];
+    }
+    return ean13
+}
 
 //Función para decodificar una línea asd
 function decodeLine(line){
     //Line es un arreglo bla bla bla
     let bars = readBars(line);
+
 
 
 }
@@ -41,6 +65,10 @@ function readBars(line){
     return bars;
 }
 
+//
+function classifyBars(bars){
+    
+}
 //Función para decodificar los 42 espacios a la izquierda del center guard
 function decodeLeftBarPattern(pattern){ 
     //Pattern es un número binario de 7 dígitos en forma de string
