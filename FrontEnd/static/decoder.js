@@ -1,6 +1,6 @@
 //Función para decodificar imagen
 function decode(image){
-
+    let grayImage = cv.cvtColor(image, cv.COLOR_BGR2GRAY);
 
     return {"ean13" : ean13,
             "isValid" : isValid,
