@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Identificador de codigos</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <!--<script src="/static/detector.js"></script>-->
+        <script src="/static/Canvas.js"></script>
+        <script src="/static/decoder.js"></script>
+        
+        
+        
+    </head>
+    <body>
+        <video class="centerX" id="videoHTML" playsinline autoplay style="display:none"></video>
+        
+        <div class="title">
+            Identificador de codigos - Testing
+        </div>
+        <div style="width:100%">
+            <div class="canvasWrapper centerX">
+                <div class="canvasContainer centerY">
+                    <canvas id="canvasShown"></canvas>
+                </div>
+                <div class="canvasContainer centerY">
+                    <canvas id="canvasProcess" style="display:block"></canvas>                    
+                </div>
+            </div>
+        </div>
+        
+        
+
+        <button class="takePicture centerX" onclick="showCamera()">
+            Capturar artículo
+        </button>
+        <button class="takePicture centerX" onclick="changeCamera()">
+            Cambiar cámara
+        </button>
+        <p style="text-align: center;font-weight: bolder;">
+            Resultado:
+        </p>
+        <div class="result centerX">
+            
+        </div>
+        <script src="/static/processing.js"></script>
+        <script async src="/static/opencv.js" onload="setOpenCV();" type="text/javascript"></script>
+    </body>
+</html>
+
