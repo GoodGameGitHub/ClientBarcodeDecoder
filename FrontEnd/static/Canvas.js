@@ -7,17 +7,19 @@ class Canvas{
         this.pixelsLenght = width*height*4;
     }
     
-    getImage(){
+    getImage(type){
         this.imgData = this.ctx.getImageData(0, 0, this.htmlElement.width, this.htmlElement.height);
-        let mat = new cv.Mat(this.htmlElement.height, this.htmlElement.width, cv.CV_8UC4);
-        let length = this.imgData.data.length;
-        for(let i = 0; i < length; i++){
-            mat.data[i] = this.imgData.data[i];
-        }
-        return mat;
+        return (type == 0) ? this.imgData.data: cv.matFromImageData(this.imgData);
     }
 
-    setImage(mat){//en lugar de pixels, es matriz
-        cv.imshow(this.htmlElement.id,mat);
+    setImage(processed){//Processed es el argumento que tiene una imagen ya procesada que puede ser del tipo cv.Mat o ctx.pixels
+        if(processed instanceof cv.Mat){
+            cv.imshow(this.htmlElement.id,processed);
+        }
+        else{
+            this.pixels = processed;
+            //this.imgData.data = this.pixels;
+            this.ctx.putImageData(this.imgData, 0, 0);
+        }
     }
-}
+} 

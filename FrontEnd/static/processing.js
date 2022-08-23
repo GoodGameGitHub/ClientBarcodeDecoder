@@ -91,10 +91,8 @@ function changeCamera(){
 function canvasInput(){
     canvasShown.ctx.drawImage(videoHTML,0,0,widthCanvasShown,heightCanvasShown,0,0,widthCanvasShown,heightCanvasShown);
     canvasProcess.ctx.drawImage(videoHTML,x1,y1,(x2-x1+1),(y2-y1+1),0,0,(x2-x1+1),(y2-y1+1));
-    
-
-    canvasShownPutImage(canvasShown.getImage());
-    canvasProcessPutImage(canvasProcess.getImage());
+    canvasShownPutImage(canvasShown.getImage(0));
+    canvasProcessPutImage(canvasProcess.getImage(1));
 
     if(detected){
         return;
@@ -104,8 +102,8 @@ function canvasInput(){
     }
 }
 
-function canvasShownPutImage(mat){
-    let pixelsLenght = mat.data.length;
+function canvasShownPutImage(pixels){
+    let pixelsLenght = pixels.length;
     let width = canvasShown.htmlElement.width;
 
     for(let i = 0; i < pixelsLenght; i +=4){
@@ -116,18 +114,25 @@ function canvasShownPutImage(mat){
             continue;
         }
         else{
-            mat.data[i] = Math.floor(mat.data[i]*bP);
-            mat.data[i+1] = Math.floor(mat.data[i+1]*bP);
-            mat.data[i+2] = Math.floor(mat.data[i+2]*bP);
+            pixels[i] = Math.floor(pixels[i]*bP);
+            pixels[i+1] = Math.floor(pixels[i+1]*bP);
+            pixels[i+2] = Math.floor(pixels[i+2]*bP);
         }
     }
-    canvasShown.setImage(mat);
+    canvasShown.setImage(pixels);
 }
 
 function canvasProcessPutImage(mat){
+    let processingImage = detect(mat);
+    /*
     let pixelsLenght = mat.data.length;
     let val = 0;
     let width = canvasProcess.htmlElement.width;
+    let dest = new cv.Mat();
+    let low = new cv.Mat(mat.rows, mat.cols, mat.type(), [100,100,100,0]);
+    let high = new cv.Mat(mat.rows, mat.cols, mat.type(), [255,255,255,0]);;
+    cv.inRange(mat, high, low, dest);
+    
     for(let i = 0; i < pixelsLenght; i += 4){
         pixel = Math.floor(i/4);
         row = Math.floor(pixel/width);
@@ -138,7 +143,8 @@ function canvasProcessPutImage(mat){
         mat.data[i+1] = val;
         mat.data[i+2] = val;
     }
+    */
     //Detectar y procesar
-    canvasProcess.setImage(mat);
-}
+    canvasProcess.setImage(processingImage);
+} 
 
