@@ -9,7 +9,7 @@ class Canvas{
     
     getImage(type){
         this.imgData = this.ctx.getImageData(0, 0, this.htmlElement.width, this.htmlElement.height);
-        return (type == 0) ? this.imgData.data: cv.matFromImageData(this.imgData);
+        return (type == 0) ? this.imgData.data: cv.imread(this.htmlElement.id);//cv.matFromImageData(this.imgData);
     }
 
     setImage(processed){//Processed es el argumento que tiene una imagen ya procesada que puede ser del tipo cv.Mat o ctx.pixels

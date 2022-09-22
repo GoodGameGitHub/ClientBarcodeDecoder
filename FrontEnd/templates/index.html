@@ -4,9 +4,9 @@
         <title>Identificador de codigos</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="/static/style.css">
-        <script src="/static/detector.js"></script>
+        <script src="/static/root/detector.js"></script>
         <script src="/static/Canvas.js"></script>
-        <script src="/static/decoder.js"></script>
+        <script src="/static/root/decoder.js"></script>
         
         
         
@@ -18,14 +18,15 @@
             Identificador de codigos - Testing
         </div>
         <div style="width:100%">
-            <div class="canvasWrapper centerX">
+            <div class="canvasWrapper centerX" style="display: grid; grid-template-columns: 1fr 1fr;">
                 <div class="canvasContainer centerY">
                     <canvas id="canvasShown"></canvas>
                 </div>
                 <div class="canvasContainer centerY">
-                    <canvas id="canvasProcess" style="display:block"></canvas>                    
+                    <canvas id="canvasProcess" style="display:block"></canvas>
                 </div>
             </div>
+            
         </div>
         
         
@@ -42,7 +43,7 @@
         <div class="result centerX">
             
         </div>
-        <script src="/static/processing.js"></script>
+        <script src="/static/root/processing.js"></script>
         <script async src="/static/opencv.js" onload="setOpenCV();" type="text/javascript"></script>
     </body>
 </html>

@@ -7,7 +7,7 @@ app =  Flask(__name__);
 def index():
     return render_template("index.html")
 
-@app.route('/opencv-testing')
+@app.route('/testing')
 def opencv():
     return render_template("test.html")
 
